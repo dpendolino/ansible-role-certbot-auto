@@ -1,0 +1,16 @@
+---
+# tasks file for ansible-role-certbot-auto
+- name: Install wget
+  apt:
+    name: wget
+    state: present
+    update_cache: yes
+- name: Get certbot-auto
+  get_url:
+    url: https://dl.eff.org/certbot-auto
+    dest: /usr/local/bin/certbot-auto
+- name: Set permissions
+  file:
+    path: /usr/local/bin/certbot-auto
+    owner: root
+    mode: '0755'

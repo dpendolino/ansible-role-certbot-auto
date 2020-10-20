@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-role-certbot-auto"
+      include_role:
+        name: "ansible-role-certbot-auto"

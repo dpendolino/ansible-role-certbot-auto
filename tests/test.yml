@@ -9,4 +9,4 @@
       failed_when: result.rc > 1
     - name: Assert Google DNS Plugin is Installed # noqa 301 305
       shell: /usr/local/bin/certbot-auto plugins
-      failed_when: "dns-google" not in result.stdout
+      failed_when: '"dns-google" not in result.stdout'

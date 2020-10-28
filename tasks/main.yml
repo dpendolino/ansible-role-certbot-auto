@@ -14,3 +14,11 @@
     path: /usr/local/bin/certbot-auto
     owner: root
     mode: '0755'
+- name: Install Certbot Dependencies
+  shell: yes |/usr/local/bin/certbot-auto --install-only
+  changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
+- name: Install Google DNS Plugin
+  pip:
+    executable: /opt/eff.org/certbot/venv/bin/pip
+    name: certbot-dns-google
+  when: google_dns_plugin

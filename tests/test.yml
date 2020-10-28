@@ -7,3 +7,6 @@
     - name: Assert that certbot-auto runs
       shell: /usr/local/bin/certbot-auto --help
       failed_when: result.rc > 1
+    - name: Assert Google DNS Plugin is Installed
+      shell: /usr/local/bin/certbot-auto plugins
+      failed_when: "dns-google" not in result.stdout

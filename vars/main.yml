@@ -1,2 +1,3 @@
 ---
 # vars file for ansible-role-certbot-auto
+google_dns_plugin: yes

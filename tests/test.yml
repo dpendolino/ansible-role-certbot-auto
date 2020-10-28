@@ -4,9 +4,9 @@
   roles:
     - ansible-role-certbot-auto
   tasks:
-    - name: Assert that certbot-auto runs
+    - name: Assert that certbot-auto runs # noqa 301 305
       shell: /usr/local/bin/certbot-auto --help
       failed_when: result.rc > 1
-    - name: Assert Google DNS Plugin is Installed
+    - name: Assert Google DNS Plugin is Installed # noqa 301 305
       shell: /usr/local/bin/certbot-auto plugins
       failed_when: "dns-google" not in result.stdout

@@ -15,7 +15,16 @@
     owner: root
     mode: '0755'
 - name: Install Certbot Dependencies
-  shell: yes |/usr/local/bin/certbot-auto --install-only
+  shell: set -o pipefail && /usr/local/bin/certbot-auto --install-only --noninteractive
+  # shell: set -o pipefail && yes |/usr/local/bin/certbot-auto --install-only
+  args:
+    executable: /bin/bash
+  register: result
+  changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
+- name: debug rc
+  debug:
+    var: result
+    verbosity: 0
   changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
 - name: Install Google DNS Plugin
   pip:
